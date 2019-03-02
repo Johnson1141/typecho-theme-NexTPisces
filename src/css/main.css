@@ -572,7 +572,7 @@ body {
 }
 
 .header-inner {
-    width: 75%;
+    width: 700px;
     margin: 0 auto;
     padding: 100px 0 70px;
 }
@@ -2458,7 +2458,7 @@ body {
 
 .header {
     position: relative;
-    width: 960px;
+    width: 75%;
     margin: 0 auto;
 }
 
@@ -2526,7 +2526,7 @@ body {
 }
 
 .container .main-inner {
-    width: 960px;
+    width: 75%;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2551,14 +2551,14 @@ body {
 
 @media (min-width: 768px) and (max-width: 991px) {
     .content-wrap {
-        width: 100%;
+        width: calc(100%-254px);
         padding: 20px;
     }
 }
 
 @media (max-width: 767px) {
     .content-wrap {
-        width: 100%;
+        width: calc(100%-254px);
         padding: 20px;
     }
 }
