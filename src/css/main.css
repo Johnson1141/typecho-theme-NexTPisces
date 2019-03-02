@@ -572,7 +572,7 @@ body {
 }
 
 .header-inner {
-    width: 700px;
+    width: 75%;
     margin: 0 auto;
     padding: 100px 0 70px;
 }
@@ -588,7 +588,7 @@ body {
 }
 
 .main-inner {
-    width: 700px;
+    width: 75%px;
     margin: 0 auto;
 }
 
@@ -2544,7 +2544,7 @@ body {
 .content-wrap {
     float: right;
     box-sizing: border-box;
-    width: 700px;
+    width: calc(100%-254px);
     padding: 40px;
     background: #fff;
 }
