@@ -2458,7 +2458,7 @@ body {
 
 .header {
     position: relative;
-    width: 960px;
+    width: 75%;
     margin: 0 auto;
 }
 
@@ -2526,7 +2526,7 @@ body {
 }
 
 .container .main-inner {
-    width: 960px;
+    width: 75%;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2544,14 +2544,14 @@ body {
 .content-wrap {
     float: right;
     box-sizing: border-box;
-    width: 700px;
+    width: calc(100% - 252px);
     padding: 40px;
     background: #fff;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
     .content-wrap {
-        width: 100%;
+        width: calc(100% - 252px);
         padding: 20px;
     }
 }
