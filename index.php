@@ -37,6 +37,7 @@ $this->need('header.php');
                       <?php $this->date('Y-m-d'); ?>
                   </time>
                 </span>
+&nbsp; | &nbsp; <span>更新于</span> <?php echo date('Y-m-d', $this->modified);?>
                 <span class="post-category">
                   &nbsp; | &nbsp;
                   <span class="post-meta-item-icon">
@@ -47,10 +48,7 @@ $this->need('header.php');
                       <?php $this->category(' , '); ?>
                     </span>
                 </span>
-             <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a rel="nofollow" href="<?php $this->permalink() ?>#comments"><?php $this->commentsNum('暂无评论', '1 条评论', '%d 条评论'); ?></a>
-             </span>
+            
                                 </div>
                             </header>
                             <div class="post-body" itemprop="articleBody">
