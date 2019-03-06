@@ -8,7 +8,7 @@ function themeConfig($form)
 
     $siteUrl = Helper::options()->siteUrl;
 
-    $next_name = new Typecho_Widget_Helper_Form_Element_Text('next_name', NULL, '', _t('侧边栏显示的昵称'));
+    $next_name = new Typecho_Widget_Helper_Form_Element_Text('next_name', NULL, '钟顺源', _t('站点名称'));
     $next_name->input->setAttribute('class', 'w-100 mono');
     $form->addInput($next_name);
 
@@ -16,7 +16,7 @@ function themeConfig($form)
     $next_gravatar->input->setAttribute('class', 'w-100 mono');
     $form->addInput($next_gravatar->addRule('email', '请填写一个邮箱地址'));
 
-    $next_tips = new Typecho_Widget_Helper_Form_Element_Text('next_tips', NULL, '一个高端大气上档次的网站', _t('站点描述'), _t('将显示在侧边栏的昵称下方'));
+    $next_tips = new Typecho_Widget_Helper_Form_Element_Text('next_tips', NULL, ' ', _t('站点描述'), _t('将显示在侧边栏的昵称下方'));
     $form->addInput($next_tips);
 
     $next_cdn = new Typecho_Widget_Helper_Form_Element_Text('next_cdn', NULL, $siteUrl, _t('cdn镜像地址'), _t('静态文件cdn镜像加速地址，加速js和css，如七牛，又拍云等<br>格式参考：' . $siteUrl . '<br>不用请留空或者保持默认'));
@@ -38,14 +38,14 @@ function themeConfig($form)
             'about' => _t('关于'),
             'search' => _t('搜索'),
         ),
-        array('main', 'archive', 'tags', 'search',), _t('侧边导航栏设置'));
+        array('main', 'archive', 'tags','categories','tags','about', 'search',), _t('侧边导航栏设置'));
 
     $form->addInput($sidebarNav->multiMode());
 
     $sidebarOthers = new Typecho_Widget_Helper_Form_Element_Checkbox('sidebarOthers',
         array('ShowFeed' => _t('显示RSS订阅'),
         ),
-        array('ShowFeed'), _t('其他设置'));
+        array(), _t('其他设置'));
 
     $form->addInput($sidebarOthers->multiMode());
 }

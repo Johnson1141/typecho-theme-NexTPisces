@@ -29,11 +29,11 @@ Typecho_Widget::widget('Widget_Stat')->to($stat);
         }
         ?>">
             <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <img class="site-author-image" src="<?php echo getGravatar($this->options->next_gravatar, 70); ?>" alt="<?php $this->options->next_name(); ?>" itemprop="image"/>
-                <p class="site-author-name" itemprop="name"><?php $this->options->next_name(); ?></p>
+                <!--img class="site-author-image" src="<?php echo getGravatar($this->options->next_gravatar, 70); ?>" alt="<?php $this->options->next_name(); ?>" itemprop="image"/-->
+                <p class="site-author-name" style="text-align:center" itemprop="name"><?php $this->options->next_name(); ?></p>
                 <p class="site-description motion-element" itemprop="description"><?php $this->options->next_tips(); ?></p>
             </div>
-            <nav class="site-state motion-element">
+            <nav class="site-state motion-element" style="text-align:center">
                 <div class="site-state-item site-state-posts">
                     <a href="<?php echo Typecho_Router::url('page', array('slug' => 'archive'), $this->options->index); ?>">
                         <span class="site-state-item-count"><?php echo $stat->publishedPostsNum; ?></span>
@@ -63,37 +63,14 @@ Typecho_Widget::widget('Widget_Stat')->to($stat);
                     </a>
                 </div>
             <?php endif; ?>
-            <div class="links-of-author motion-element">
-  <span class="links-of-author-item">
-    <a href="https://github.com/example" target="_blank">
-        <i class="fa fa-github"></i> GitHub
-    </a>
-  </span>
-  <span class="links-of-author-item">
-    <a href="http://www.zhihu.com/people/example" target="_blank">
-        <i class="fa fa-globe"></i> 知乎
-    </a>
-  </span>
-  <span class="links-of-author-item">
-    <a href="http://v2ex.com/member/example" target="_blank">
-        <i class="fa fa-globe"></i> V2EX
-    </a>
-  </span>
-  <span class="links-of-author-item">
-    <a href="http://segmentfault.com/u/example" target="_blank">
-        <i class="fa fa-globe"></i> SF
-    </a>
-  </span>
-            </div>
-            <?php if (class_exists("Links_Plugin")): ?>
-                <div class="motion-element" <?php
-                if ($this->options->sidebarFlinks == 'hide') {
-                    echo 'hidden';
-                } ?>>
+            
+                <div class="motion-element">
+
                     <div class="friend-link-title">友情链接</div>
-                    <?php Links_Plugin::output('<span class="friend-link-item"><a href="{url}" title="{title}" target="_blank">{name}</a></span>'); ?>
+                    <span class="friend-link-item"><a href="https://www.cnblogs.com/xiuwenli/"  target="_blank">xiuwenli</a></span>
                 </div>
-            <?php endif; ?>
+            
+            
         </section>
         <?php if ($this->is('post')): ?>
             <section class="post-toc-wrap sidebar-panel-active motion-element">

@@ -169,6 +169,6 @@
   
 $('.sidebar-inner').affix({
     offset: {
-      top: $('.header-inner').height()+10      
+      top: $('.header-inner').height()+10
     }
 });

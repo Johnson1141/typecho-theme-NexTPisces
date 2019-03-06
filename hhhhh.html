@@ -1,0 +1,286 @@
+<!doctype html>
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <script src="https://code.jquery.com/jquery.js"></script>
+    <script>
+(function(d){function m(){var b=d("script:first"),a=b.css("color"),c=false;if(/^rgba/.test(a))c=true;else try{c=a!=b.css("color","rgba(0, 0, 0, 0.5)").css("color");b.css("color",a)}catch(e){}return c}function j(b,a,c){var e="rgb"+(d.support.rgba?"a":"")+"("+parseInt(b[0]+c*(a[0]-b[0]),10)+","+parseInt(b[1]+c*(a[1]-b[1]),10)+","+parseInt(b[2]+c*(a[2]-b[2]),10);if(d.support.rgba)e+=","+(b&&a?parseFloat(b[3]+c*(a[3]-b[3])):1);e+=")";return e}function g(b){var a,c;if(a=/#([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})/.exec(b))c=
+[parseInt(a[1],16),parseInt(a[2],16),parseInt(a[3],16),1];else if(a=/#([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F])/.exec(b))c=[parseInt(a[1],16)*17,parseInt(a[2],16)*17,parseInt(a[3],16)*17,1];else if(a=/rgb\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*\)/.exec(b))c=[parseInt(a[1]),parseInt(a[2]),parseInt(a[3]),1];else if(a=/rgba\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9\.]*)\s*\)/.exec(b))c=[parseInt(a[1],10),parseInt(a[2],10),parseInt(a[3],10),parseFloat(a[4])];return c}
+d.extend(true,d,{support:{rgba:m()}});var k=["color","backgroundColor","borderBottomColor","borderLeftColor","borderRightColor","borderTopColor","outlineColor"];d.each(k,function(b,a){d.Tween.propHooks[a]={get:function(c){return d(c.elem).css(a)},set:function(c){var e=c.elem.style,i=g(d(c.elem).css(a)),h=g(c.end);c.run=function(f){e[a]=j(i,h,f)}}}});d.Tween.propHooks.borderColor={set:function(b){var a=b.elem.style,c=[],e=k.slice(2,6);d.each(e,function(h,f){c[f]=g(d(b.elem).css(f))});var i=g(b.end);
+b.run=function(h){d.each(e,function(f,l){a[l]=j(c[l],i,h)})}}}})(jQuery);
+    </script>
+    
+
+    <style>
+
+        
+        .box{
+            margin: 3px;
+            padding: 0%;
+            border-style: solid;
+            border-color:black;
+            border-width: 1px;
+            display:inline-block; 
+            width: 50px;
+            height: 50px;
+        }
+        div{
+            margin: 0%;
+            padding: 0%;
+        }
+        input[type="checkbox"]{width:20px;height:20px;display: inline-block;text-align: center;vertical-align: middle; line-height: 18px;position: relative;}
+        input[type="checkbox"]::before{content: "";position: absolute;top: 0;left: 0;background: #fff;width: 100%;height: 100%;border: 1px solid #d9d9d9}
+        input[type="checkbox"]:checked::before{content: "\2713";background-color:
+                rgb(93, 163, 184);position: absolute;top: 0;left: 0;width:100%;border: 1px solid #fff;color:#fff;font-size: 12px;font-weight: bold;}
+    </style>
+</head>
+<body>
+    <div class="container" style="background:white;">
+            <div class="row">
+                <div class="col-md-8">
+                    <div id="hang" class="center-block" style="text-align:center">
+                    </div>
+                </div>
+
+                <div class="col-md-4" style="margin-top:7%">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">参数设置</div>
+                        <div class="panel-body">
+                            <div>
+                                <div class="col-md-1"><input type="checkbox" id="checkbox1" style="display:inline-block" id="limit"></div>
+                                <div class="col-md-10">
+                                    <div class="input-group" >
+                                            <span class="input-group-addon" id="basic-addon1">步数限制</span>
+                                            <input type="text" id="input1" class="form-control" placeholder="留空默认没有限制" aria-describedby="basic-addon1">
+                                    </div>                
+                                    <br>
+                                </div>  
+                                
+                            </div>
+                            <div class="col-md-12">
+                                    <input type="checkbox" id="checkbox2" style="display:inline-block" id="xie">
+                                    <span style="padding-left:10px">可走斜方向<br></span>
+                                    
+                            </div>
+                            
+                            <div class="col-md-12" style="padding-top: 20px;padding-bottom: 20px">
+                                <div class="col-md-12"><input id="input2" type="text" class="form-control" placeholder="边长(留空默认为8)"></div> 
+                            </div>
+                            <button class="btn btn-block btn-primary"onclick="submit()" >确认</button>
+                            <br>
+                        </div>
+                        <div class="panel-footer">
+                            </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+    <script>
+        var f = new Array();
+        var sg = new Array();
+        var tmp = new Array();
+        var flag=Number(0);
+        var nowx ,nowy;
+        var n;
+        $(function(){
+            newbox(8);
+        });
+        function submit(){
+            n=Number($("#input2").val());
+            if(n===0||n===null) n=8;
+            if($("#checkbox1").is(":checked")){
+                f = $("#input1").val().split(" ");
+                // $.each(f, function(index, value) { 
+                //     alert(index + ': ' + value); 
+                // }); 
+            }else{
+                f=new Array(n);
+                for(var i=0;i<n;i++) f[i]=Number(i+1);
+            }
+            if($("#checkbox2").is(":checked")){
+                flag=Number(1);
+            }
+            newbox(n);
+            pre();
+            start();
+        }
+        function newbox(xx){
+            $("#hang").empty();
+            if(xx<=0) xx=8; 
+            for(var i=1;i<=Number(xx);i++){
+                $("#hang").append("<div id="+i+">");
+                for(var j=1;j<=Number(xx);j++)
+                    $("#"+i).append("<span id=" +i+"_"+j+ " onclick=\'choose("+i+","+j+")\' class=\'box'\ ></span>");
+                
+                $("#hang").append("</div>");
+            }
+        }
+        function move(sx,sy,ex,ey){
+            var xxx;
+            if(sx===ex) xxx=0;
+            else if(sy===ey)xxx=1;
+            else xxx=2;
+            if(xxx===0){
+                for(var i=Number(sy)+1;i<=Number(ey);i++){
+                    $("#"+sx+"_"+i).animate({backgroundColor:'#400101'});
+                }
+                for(var i=Number(sy);i<Number(ey);i++){
+                    $("#"+sx+"_"+i).animate({backgroundColor:'#fff'});
+                }
+            }else if(xxx===1){
+                for(var i=Number(sx)+1;i<=Number(ex);i++){
+                    $("#"+i+"_"+sy).animate({backgroundColor:'#400101'});
+                }
+                for(var i=Number(sx);i<Number(ex);i++){
+                    $("#"+i+"_"+sy).animate({backgroundColor:'#fff'});
+                }
+            }
+            else{
+                var tmp=Number(sx);
+                for(var i=Number(sy);i<=Number(ey);i++){
+                    $("#"+tmp+"_"+i).animate({backgroundColor:'#400101'});
+                    tmp+=1;
+                }
+                tmp=Number(sx);
+                for(var i=Number(sy);i<Number(ey);i++){
+                    $("#"+tmp+"_"+i).animate({backgroundColor:'#fff'});
+                    tmp+=1;
+                }
+            }
+        }
+        
+        function getSG(x,y,k)
+        {
+            
+            var yy;
+            for(var i=0; i<Number(x); i++)
+            {
+                for(var j=0;j<Number(y);j++){
+                    if((i===1&&j===7)||(i===2&&j===6)) {sg[i][j]=8;break;}
+                    
+                    for(var z=0;z<100;z++) tmp[z]=Number(0);
+                    for(var z=0; (i>=f[z]||j>=f[z]) && z < k; z++) {
+                        //cout<<z<<endl;
+                        if(i>=f[z]) tmp[sg[i-f[z]][j]]=1;
+                        if(j>=f[z]) tmp[sg[i][j-f[z]]]=1;
+                        if(i>=f[z]&&j>=f[z]&&flag===1) tmp[sg[i-f[z]][j-f[z]]]=1;
+                        
+                    }
+                   for(var z=0; ; z++)
+                    {
+                        if(tmp[z]===0)
+                        {
+                                sg[i][j]=z;
+                                //cout<<i<<" "<<j<<" "<<z<<endl;
+                                //alert(i+" "+j+" "+z+"\n");
+                                yy+=String(i+" "+j+" "+z+"\n");
+                                break;
+                        }
+                    }
+                }
+            }
+            //alert(yy);
+        }
+        function sleep(n) { //n表示的毫秒数
+            var start = new Date().getTime();
+            while (true) if (new Date().getTime() - start > n) break;
+        }  
+        function pre(){
+            for(var i=0;i<n+10;i++){    
+                sg[i] = new Array();
+                for(var j=0;j<n+10;j++){
+                    sg[i][j] = Number(0);
+                }
+            }
+            //for(var i=0;i<n;i++) f[i]=Number(i+1);
+            //alert(f.length);
+            getSG(Number(n),Number(n),f.length);
+            
+        }
+        
+        function computer(){
+            console.log(f.length);
+            console.log(Number(f[1])+Number(nowx));
+            console.log(n);
+            
+            for(var i=0;i<Number(f.length);i++){
+                console.log("xx");
+                if((Number(f[i])+Number(nowx))<=n){
+                    var xx=Number(nowx)+Number(f[i]);
+                    console.log(n);console.log(xx);
+                    console.log(n-xx);
+                    //console.log(Number(sg[n-i][n-nowy]));
+                    if(Number(sg[Number(n-xx)][Number(n-nowy)])===0) {
+                        move(nowx,nowy,xx,nowy);
+                        nowx=xx;
+                        //alert("com");
+                        return;
+                    }
+                }
+            }
+            for(var i=0;i<f.length&&(Number(f[i])+Number(nowy))<=n;i++){
+                var yy=Number(f[i])+Number(nowy);
+                if(Number(sg[n-nowx][n-yy])===0) {
+                    move(nowx,nowy,nowx,yy);
+                    //alert("com");
+                    nowy=yy;return;
+                }
+            }
+            if(flag===1){
+                for(var i=0;i<f.length;i++){
+                    var xx=Number(nowx)+Number(f[i]);
+                    var yy=Number(f[i])+Number(nowy);
+                    if(xx<=n && yy<=n)
+                    if(Number(sg[n-xx][n-yy])===0) {
+                        move(nowx,nowy,xx,yy);
+                        //alert("com");
+                        nowx=xx;
+                        nowy=yy;
+                        return;
+                    }
+                }
+            }
+            if(nowx<n) {move(nowx,nowy,nowx+1,nowy);nowx++;}
+            else if(nowy<n){move(nowx,nowy,nowx,nowy+1);nowy++;}
+            //alert("com");
+        }
+        function in_f(x){
+            console.log(x);
+            console.log(f.length);
+            for(var i =0;i<f.length;i++){
+                console.log(f[i]);
+                if(Number(f[i])===Number(x)) return true;
+            }
+            return false;
+        }
+        
+        function choose(i,j){
+            //alert(i+" "+j);
+            if(i===nowx||j===nowy||((nowy-nowx)===(j-i)&&flag===1)){
+                var bu ;
+                if(Number(i-nowx)>Number(j-nowy)) {
+                    bu = i-nowx;
+                }else{
+                    bu = j-nowy;
+                }
+                console.log(in_f(bu));
+                if(in_f(bu)===true){
+                    move(nowx,nowy,i,j);
+                    nowx = i;
+                    nowy = j;
+                    setTimeout("computer()", 2000);
+                }
+            }
+        }
+        
+        
+        function start(){
+            nowx = 1,nowy = 1;
+            $("#"+nowx+"_"+nowy).css("background-color",'#400101');    
+            //computer();
+        }
+
+    </script>
+</body>
+</html>
