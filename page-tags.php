@@ -11,7 +11,7 @@ $this->need('header.php'); ?>
             <div class="content-wrap">
                 <div id="content" class="content">
                     <div id="posts" class="posts-expand">
-                        <div class="tag-cloud">
+                        <div class="tag-cloud post">
                             <div class="tag-cloud-title">
                                 目前共计 <?php echo getTagCount(); ?> 个标签
                                 <div class="tag-cloud-tags">

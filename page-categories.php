@@ -10,7 +10,7 @@ $this->need('header.php'); ?>
         <div class="content-wrap">
             <div id="content" class="content">
                 <div id="posts" class="posts-expand">
-                    <div class="category-all-page">
+                    <div class="category-all-page post">
                         <div class="category-all-title">
                             <div>目前共计 <?php echo $stat->categoriesNum; ?> 个分类</div>
                         </div>
