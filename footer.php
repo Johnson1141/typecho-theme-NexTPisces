@@ -60,7 +60,7 @@
 
                 var currentTarget = $('.' + activePanelClassName);
                 var target = $('.' + item.data('target'));
-
+				
                 hasVelocity ?
                     currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
                         target

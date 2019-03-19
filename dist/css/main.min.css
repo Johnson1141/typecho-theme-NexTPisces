@@ -1983,11 +1983,11 @@ pre .javascript .function {
 }
 
 .post-toc .nav .active > a {
-    color: #ccc;
+    color: #fc6423;
 }
 
 .post-toc .nav .active-current > a {
-    color: #222;
+    color: #fc6423;
 }
 
 .post-toc .nav .active-current > a:hover {
@@ -2891,7 +2891,7 @@ body {
 }
 
 .post-toc ol {
-    padding: 0 20px 10px;
+    padding: 0 10px 10px;
 }
 
 @media (max-width: 767px) {

@@ -36,9 +36,10 @@ function themeConfig($form)
             'categories' => _t('分类'),
             'tags' => _t('标签'),
             'about' => _t('关于'),
+            'link' => _t('链接'),
             'search' => _t('搜索'),
         ),
-        array('main', 'archive', 'tags','categories','tags','about', 'search',), _t('侧边导航栏设置'));
+        array('main', 'archive', 'tags','categories','tags','about','link', 'search',), _t('侧边导航栏设置'));
 
     $form->addInput($sidebarNav->multiMode());
 
@@ -71,7 +72,7 @@ function getTagCount()
 function getIconName($slug)
 {
     // 得到页面缩略名对应的字体图标名
-    $names = array('archive' => 'archive', 'about' => 'user', 'categories' => 'folder-open', 'tags' => 'tags', 'links' => 'users');
+    $names = array('archive' => 'archive', 'about' => 'user', 'categories' => 'folder-open', 'tags' => 'tags', 'links' => 'users','link' => 'link');
     return $names[$slug];
 }
 
